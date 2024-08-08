@@ -14,7 +14,13 @@ struct AllBooksViewController: View {
     
     @State private var books: [Book] = []
         
-        var collectionName: String
+    var collectionName: String
+    
+    let columns = [
+        GridItem(.flexible()),
+        GridItem(.flexible()),
+        GridItem(.flexible())
+    ]
         
         var body: some View {
 //            NavigationStack {
@@ -24,39 +30,43 @@ struct AllBooksViewController: View {
                         .padding()
                     
                     ScrollView {
-                        LazyVStack {
-                            ForEach(books) { book in
-                                HStack {
-                                    if let url = URL(string: book.thumbnail ?? "") {
+                        LazyVGrid(columns: columns, spacing: 20) {
+                            ForEach(books, id: \.id) { book in
+                                VStack {
+                                    if let urlString = book.thumbnail, let url = URL(string: urlString) {
                                         AsyncImage(url: url) { image in
                                             image.resizable()
                                                 .aspectRatio(contentMode: .fit)
                                                 .frame(width: 100, height: 150)
-                                                .cornerRadius(8)
                                         } placeholder: {
                                             Rectangle()
                                                 .fill(Color.gray.opacity(0.3))
                                                 .frame(width: 100, height: 150)
-                                                .cornerRadius(8)
                                         }
+                                    } else {
+                                        Rectangle()
+                                            .fill(Color.gray.opacity(0.3))
+                                            .frame(width: 100, height: 150)
                                     }
-                                    
-                                    VStack(alignment: .leading) {
-                                        Text(book.title)
-                                            .font(.headline)
-                                        Text((book.authors.joined(separator: ", ")) ?? "Unknown Author")
-                                            .font(.subheadline)
-                                    }
+                                                    
+                                    Text(book.title)
+                                        .font(.headline)
+                                        .lineLimit(1)
+                                        .frame(maxWidth: 100)
                                     Spacer()
                                 }
                                 .padding()
                             }
                         }
+                        .padding(.horizontal)
                     }
                     .onAppear {
-                        if authViewModel.isAuthenticated, let userID = authViewModel.user?.uid {
-                            firestoreService.getAllBooksInCollection(userID: userID, bookCollectionName: collectionName) { fetchedBooks in
+                        if authViewModel.isAuthenticated, let userID = authViewModel.user?.uid { firestoreService.getAllBooksInCollection(userID: userID, bookCollectionName: collectionName) { fetchedBooks in
                                 books = fetchedBooks
+                                print("Fetched books: \(books)")
+                                for book in books {
+                                    print("Thumbnail URL: \(book.thumbnail ?? "No URL")")
+                                }
                             }
                         }
                     }
