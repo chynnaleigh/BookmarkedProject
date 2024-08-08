@@ -17,6 +17,9 @@ struct BookViewController: View {
     @State private var unreadThumbnails: [String?] = []
     @State private var completedThumbnails: [String?] = []
     @State private var allThumbnails: [String?] = []
+    
+    @State private var showUnreadBooks = false
+    @State private var showCompletedBooks = false
     @State private var showAllBooks = false
     
     var isSelected: Bool
@@ -53,9 +56,9 @@ struct BookViewController: View {
                         HStack {
                             Text("Unread")
                             Spacer()
-                            NavigationLink(destination: AllBooksViewController(collectionName: "Unread").environmentObject(authViewModel), isActive: $showAllBooks) {
+                            NavigationLink(destination: AllBooksViewController(collectionName: "Unread").environmentObject(authViewModel), isActive: $showUnreadBooks) {
                                 Button(action: {
-                                    showAllBooks = true
+                                    showUnreadBooks = true
                                 }) {
                                     Text("see all")
                                 }
@@ -95,9 +98,9 @@ struct BookViewController: View {
                         HStack {
                             Text("Completed")
                             Spacer()
-                            NavigationLink(destination: AllBooksViewController(collectionName: "Completed").environmentObject(authViewModel), isActive: $showAllBooks) {
+                            NavigationLink(destination: AllBooksViewController(collectionName: "Completed").environmentObject(authViewModel), isActive: $showCompletedBooks) {
                                 Button(action: {
-                                    showAllBooks = true
+                                    showCompletedBooks = true
                                 }) {
                                     Text("see all")
                                 }
