@@ -16,7 +16,7 @@ struct BookItem: Decodable {
 }
 
 struct Book: Decodable, Identifiable {
-    let id = UUID()
+    let id: UUID
     let title: String
     let authors: [String]
     var description: String?
@@ -39,6 +39,7 @@ struct Book: Decodable, Identifiable {
 
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
+        id = UUID()
         title = try container.decode(String.self, forKey: .title)
         authors = try container.decode([String].self, forKey: .authors)
         description = try container.decodeIfPresent(String.self, forKey: .description)
@@ -59,11 +60,13 @@ struct Book: Decodable, Identifiable {
     }
 }
 
-struct BookAllData: Decodable, Identifiable {
-    var id = UUID()
+struct BookAllData: Identifiable {
+    var id: UUID
     var title: String
     var authors: [String]?
     var description: String?
     var thumbnail: String?
     var pageCount: Int?
+    var dateAdded: Date?
+    var lastEdited: Date?
 }

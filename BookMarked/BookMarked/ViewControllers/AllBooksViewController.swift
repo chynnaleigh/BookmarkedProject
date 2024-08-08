@@ -13,6 +13,8 @@ struct AllBooksViewController: View {
     private let firestoreService = FirestoreService()
     
     @State private var books: [BookAllData] = []
+    @State private var selectedBook: BookAllData?
+    @State private var showingBookDetail = false
         
     var collectionName: String
     
@@ -48,7 +50,7 @@ struct AllBooksViewController: View {
                                             .fill(Color.gray.opacity(0.3))
                                             .frame(width: 100, height: 150)
                                     }
-                                                    
+                                    
                                     Text(book.title)
                                         .font(.headline)
                                         .lineLimit(1)
@@ -56,17 +58,28 @@ struct AllBooksViewController: View {
                                     Spacer()
                                 }
                                 .padding()
+                                .onTapGesture {
+                                    selectedBook = book
+                                    showingBookDetail = true
+                                }
+                            }
+                            .padding(.horizontal)
+                        }
+                        .onAppear {
+                            if authViewModel.isAuthenticated, let userID = authViewModel.user?.uid {
+                                firestoreService.getAllBooksInCollection(userID: userID, bookCollectionName: collectionName) { fetchedBooks in
+                                    books = fetchedBooks
+                                    print("Fetched books: \(books)")
+                                    for book in books {
+                                        print("Thumbnail URL: \(book.thumbnail ?? "No URL")")
+                                    }
+                                }
                             }
                         }
-                        .padding(.horizontal)
-                    }
-                    .onAppear {
-                        if authViewModel.isAuthenticated, let userID = authViewModel.user?.uid { firestoreService.getAllBooksInCollection(userID: userID, bookCollectionName: collectionName) { fetchedBooks in
-                                books = fetchedBooks
-                                print("Fetched books: \(books)")
-                                for book in books {
-                                    print("Thumbnail URL: \(book.thumbnail ?? "No URL")")
-                                }
+                        .navigationDestination(isPresented: $showingBookDetail) {
+                            if let selectedBook = selectedBook {
+                                BookDetailsViewController(book: selectedBook, currentCollectionName: collectionName)
+                                    .environmentObject(authViewModel)
                             }
                         }
                     }
