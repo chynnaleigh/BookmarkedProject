@@ -66,14 +66,7 @@ struct AllBooksViewController: View {
                             .padding(.horizontal)
                         }
                         .onAppear {
-                            if authViewModel.isAuthenticated, let userID = authViewModel.user?.uid {
-                                firestoreService.getAllBooksInCollection(userID: userID, bookCollectionName: collectionName) { fetchedBooks in
-                                    books = fetchedBooks
-                                    print("Fetched books: \(books)")
-                                    for book in books {
-                                        print("Thumbnail URL: \(book.thumbnail ?? "No URL")")
-                                    }
-                                }
+                            fetchBooks()
                             }
                         }
                         .navigationDestination(isPresented: $showingBookDetail) {
@@ -85,5 +78,17 @@ struct AllBooksViewController: View {
                     }
                 }
 //            }.navigationBarBackButtonHidden(true)
+    private func fetchBooks() {
+        if authViewModel.isAuthenticated, let userID = authViewModel.user?.uid {
+            if collectionName == "All" {
+                firestoreService.getAllBooks(userID: userID) { fetchedBooks in
+                    books = fetchedBooks
+                }
+            } else {
+                firestoreService.getAllBooksFromSubcollection(userID: userID, subcollectionName: collectionName) { fetchedBooks in
+                    books = fetchedBooks
+                }
+            }
         }
+    }
 }

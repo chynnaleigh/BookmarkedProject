@@ -96,13 +96,49 @@ class FirestoreService {
         
         dispatchGroup.notify(queue: .main) {
             let limitedThumbnails = Array(thumbnails).prefix(3)
-                    completion(Array(limitedThumbnails))
+            completion(Array(limitedThumbnails))
         }
     }
     
-    func getAllBooksInCollection(userID: String, bookCollectionName: String, completion: @escaping([BookAllData]) -> Void) {
+    func getAllBooks(userID: String, completion: @escaping ([BookAllData]) -> Void) {
         let userDoc = db.collection("users").document(userID)
-        let bookCollection = userDoc.collection("Books").document(bookCollectionName).collection(bookCollectionName)
+        let subcollections = ["Unread", "Reading", "Completed"]
+
+        var allBooks: [BookAllData] = []
+        let dispatchGroup = DispatchGroup()
+
+        for subcollection in subcollections {
+            dispatchGroup.enter()
+            let bookCollection = userDoc.collection("Books").document(subcollection).collection(subcollection)
+
+            bookCollection.order(by: "dateAdded", descending: false).getDocuments { (querySnapshot, error) in
+                if let error = error {
+                    print("Error getting books from \(subcollection): \(error)")
+                    dispatchGroup.leave()
+                    return
+                }
+
+                for document in querySnapshot?.documents ?? [] {
+                    if let title = document.data()["title"] as? String {
+                        let id = UUID(uuidString: document.documentID) ?? UUID()
+                        let thumbnail = document.data()["thumbnail"] as? String
+                        let book = BookAllData(id: id, title: title, thumbnail: thumbnail)
+                        allBooks.append(book)
+                    }
+                }
+                dispatchGroup.leave()
+            }
+        }
+
+        dispatchGroup.notify(queue: .main) {
+            completion(allBooks)
+        }
+    }
+
+        
+    func getAllBooksFromSubcollection(userID: String, subcollectionName: String, completion: @escaping ([BookAllData]) -> Void) {
+        let userDoc = db.collection("users").document(userID)
+        let bookCollection = userDoc.collection("Books").document(subcollectionName).collection(subcollectionName)
         
         bookCollection.order(by: "dateAdded", descending: false).getDocuments { (querySnapshot, error) in
             if let error = error {
@@ -113,26 +149,14 @@ class FirestoreService {
             
             var books: [BookAllData] = []
             for document in querySnapshot?.documents ?? [] {
-                print("Fetched Book:")
-                print(document.data())
                 if let title = document.data()["title"] as? String {
                     let id = UUID(uuidString: document.documentID) ?? UUID()
-                    let authors = document.data()["authors"] as? [String] ?? []
-                               let description = document.data()["description"] as? String
-                               let thumbnail = document.data()["thumbnail"] as? String
-                               let pageCount = document.data()["pageCount"] as? Int
-                               let dateAdded = (document.data()["dateAdded"] as? Timestamp)?.dateValue()
-                               let lastEdited = (document.data()["lastEdited"] as? Timestamp)?.dateValue()
+                    let thumbnail = document.data()["thumbnail"] as? String
                     let book = BookAllData(
-                                    id: id,
-                                    title: title,
-                                    authors: authors,
-                                    description: description,
-                                    thumbnail: thumbnail,
-                                    pageCount: pageCount,
-                                    dateAdded: dateAdded,
-                                    lastEdited: lastEdited
-                                )
+                        id: id,
+                        title: title,
+                        thumbnail: thumbnail
+                    )
                     books.append(book)
                 }
             }
@@ -154,8 +178,8 @@ class FirestoreService {
             }
         }
     }
-
-        
+    
+    
     func addBookToCollection(userID: String, book: BookAllData, collectionName: String, completion: @escaping (Bool) -> Void) {
         let userDoc = db.collection("users").document(userID)
         let bookCollection = userDoc.collection("Books").document(collectionName).collection(collectionName)
@@ -185,5 +209,5 @@ class FirestoreService {
             }
         }
     }
-
 }
+
