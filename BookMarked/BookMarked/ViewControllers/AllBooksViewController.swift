@@ -12,7 +12,7 @@ struct AllBooksViewController: View {
     @EnvironmentObject var authViewModel: AuthViewModel
     private let firestoreService = FirestoreService()
     
-    @State private var books: [Book] = []
+    @State private var books: [BookAllData] = []
         
     var collectionName: String
     

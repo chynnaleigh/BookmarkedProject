@@ -62,7 +62,7 @@ class FirestoreService {
         }
     }
     
-    func getAllBooksInCollection(userID: String, bookCollectionName: String, completion: @escaping([Book]) -> Void) {
+    func getAllBooksInCollection(userID: String, bookCollectionName: String, completion: @escaping([BookAllData]) -> Void) {
         let userDoc = db.collection("users").document(userID)
         let bookCollection = userDoc.collection("Books").document(bookCollectionName).collection(bookCollectionName)
         
@@ -73,9 +73,13 @@ class FirestoreService {
                 return
             }
             
-            var books: [Book] = []
+            var books: [BookAllData] = []
             for document in querySnapshot?.documents ?? [] {
-                if let book = try? document.data(as: Book.self) {
+                print("Fetched Book:")
+                print(document.data())
+                if let title = document.data()["title"] as? String {
+                    let thumbnail = document.data()["thumbnail"] as? String
+                    let book = BookAllData(title: title, thumbnail: thumbnail)
                     books.append(book)
                 }
             }

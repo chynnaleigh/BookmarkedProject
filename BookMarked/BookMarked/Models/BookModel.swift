@@ -45,8 +45,8 @@ struct Book: Decodable, Identifiable {
         pageCount = try container.decodeIfPresent(Int.self, forKey: .pageCount)
         
         if let imageLinksContainer = try? container.nestedContainer(keyedBy:ImageLinksKeys.self, forKey: .imageLinks) {
-                    thumbnail = try imageLinksContainer.decodeIfPresent(String.self, forKey: .thumbnail)
-                    thumbnail = thumbnail?.replacingOccurrences(of: "http://", with: "https://")
+            thumbnail = try imageLinksContainer.decodeIfPresent(String.self, forKey: .thumbnail)
+            thumbnail = thumbnail?.replacingOccurrences(of: "http://", with: "https://")
         } else {
             thumbnail = nil
         }
@@ -57,4 +57,13 @@ struct Book: Decodable, Identifiable {
         print("thumbnail: " + (thumbnail ?? ""))
         print("pageCount: \(pageCount ?? 0)")
     }
+}
+
+struct BookAllData: Decodable, Identifiable {
+    var id = UUID()
+    var title: String
+    var authors: [String]?
+    var description: String?
+    var thumbnail: String?
+    var pageCount: Int?
 }
