@@ -22,6 +22,7 @@ class FirestoreService {
         let bookData: [String: Any] = [
             "title": book.title,
             "authors": book.authors,
+            "description": book.description ?? "",
             "thumbnail": book.thumbnail ?? "",
             "pageCount": book.pageCount ?? 0,
             "dateAdded": dateAdded,

@@ -19,6 +19,7 @@ struct Book: Decodable, Identifiable {
     let id = UUID()
     let title: String
     let authors: [String]
+    var description: String?
     var thumbnail: String?
     var pageCount: Int?
     var dateAdded: Date
@@ -27,6 +28,7 @@ struct Book: Decodable, Identifiable {
     enum CodingKeys: String, CodingKey {
         case title
         case authors
+        case description
         case imageLinks
         case pageCount
     }
@@ -39,6 +41,7 @@ struct Book: Decodable, Identifiable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         title = try container.decode(String.self, forKey: .title)
         authors = try container.decode([String].self, forKey: .authors)
+        description = try container.decodeIfPresent(String.self, forKey: .description)
         pageCount = try container.decodeIfPresent(Int.self, forKey: .pageCount)
         
         if let imageLinksContainer = try? container.nestedContainer(keyedBy:ImageLinksKeys.self, forKey: .imageLinks) {
