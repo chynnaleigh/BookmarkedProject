@@ -275,7 +275,7 @@ class SignupViewController: UIViewController {
                     
                     let view = TabViewContainer()
                     let viewHostingController = UIHostingController(rootView: view)
-                    self.navigationController?.pushViewController(viewHostingController, animated: true)
+                    self.navigationController?.setViewControllers([viewHostingController], animated: true)
                 }
             }
         }

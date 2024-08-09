@@ -240,33 +240,12 @@ class LoginViewController: UIViewController {
                 print("User signed in: \(user.uid)")
                 let view = TabViewContainer()
                 let viewHostingController = UIHostingController(rootView: view)
-                self.navigationController?.pushViewController(viewHostingController, animated: true)
+                self.navigationController?.setViewControllers([viewHostingController], animated: true)
             case .failure(let error):
                 // Handle login error
                 print("Error logging in: \(error.localizedDescription)")
                 self.showAlert("Error", error.localizedDescription)
             }
-            
-//            guard let uid = authResult?.user.uid else { return }
-                        
-//            let db = Firestore.firestore()
-//            db.collection("users").document(uid).getDocument { (document, error) in
-//                if let document = document, document.exists {
-//                    let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
-//                    print("Document data: \(dataDescription)")
-//                    // Use the retrieved user data
-////                    self.showAlert("Success", "User logged in successfully!")
-//                    
-////                    DispatchQueue.main.async {
-//                        let view = TabViewContainer()
-//                        let viewHostingController = UIHostingController(rootView: view)
-//                        self.navigationController?.pushViewController(viewHostingController, animated: true)
-////                    }
-//                } else {
-//                    print("Document does not exist")
-//                    self.showAlert("Error", "User data not found.")
-//                }
-//            }
         }
     }
     

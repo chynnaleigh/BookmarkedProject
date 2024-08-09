@@ -82,20 +82,6 @@
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "53251B9E-A579-4D23-8D9A-ECA66BA23FA1 - 18c228b6f1815704"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "BookMarked.FirestoreService.getAllBooksFromSubcollection(userID: Swift.String, subcollectionName: Swift.String, completion: (Swift.Array&lt;BookMarked.BookAllData&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "BookMarked"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/chynnaleigh/Documents/School/COMP%203912%20-%20iOS%20Mobile%20App%20Development/Project/GitHub/BookMarked/BookMarked/FirestoreService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "141"
-                  endingLineNumber = "141">
-               </Location>
-               <Location
                   uuid = "53251B9E-A579-4D23-8D9A-ECA66BA23FA1 - 12f92ad381620930"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
