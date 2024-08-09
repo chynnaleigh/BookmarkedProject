@@ -71,19 +71,15 @@ struct BookViewController: View {
                                         image.resizable()
                                             .aspectRatio(contentMode: .fill)
                                             .frame(width: 100, height: 150)
-                                            .clipped()
-                                            .cornerRadius(8)
                                     } placeholder: {
                                         Rectangle()
                                             .fill(Color.gray.opacity(0.3))
                                             .frame(width: 100, height: 150)
-                                            .cornerRadius(8)
                                     }
                                 } else {
                                     Rectangle()
                                         .fill(Color.gray.opacity(0.3))
                                         .frame(width: 100, height: 150)
-                                        .cornerRadius(8)
                                 }
                             }
                         }.onAppear {
@@ -113,19 +109,15 @@ struct BookViewController: View {
                                         image.resizable()
                                             .aspectRatio(contentMode: .fill)
                                             .frame(width: 100, height: 150)
-                                            .clipped()
-                                            .cornerRadius(8)
                                     } placeholder: {
                                         Rectangle()
                                             .fill(Color.gray.opacity(0.3))
                                             .frame(width: 100, height: 150)
-                                            .cornerRadius(8)
                                     }
                                 } else {
                                     Rectangle()
                                         .fill(Color.gray.opacity(0.3))
                                         .frame(width: 100, height: 150)
-                                        .cornerRadius(8)
                                 }
                             }
                         }.onAppear {
@@ -155,19 +147,15 @@ struct BookViewController: View {
                                         image.resizable()
                                             .aspectRatio(contentMode: .fill)
                                             .frame(width: 100, height: 150)
-                                            .clipped()
-                                            .cornerRadius(8)
                                     } placeholder: {
                                         Rectangle()
                                             .fill(Color.gray.opacity(0.3))
                                             .frame(width: 100, height: 150)
-                                            .cornerRadius(8)
                                     }
                                 } else {
                                     Rectangle()
                                         .fill(Color.gray.opacity(0.3))
                                         .frame(width: 100, height: 150)
-                                        .cornerRadius(8)
                                 }
                             }
                         }.onAppear {

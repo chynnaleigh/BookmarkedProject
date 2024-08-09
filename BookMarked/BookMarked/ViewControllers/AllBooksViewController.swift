@@ -69,14 +69,31 @@ struct AllBooksViewController: View {
                             fetchBooks()
                             }
                         }
-                        .navigationDestination(isPresented: $showingBookDetail) {
-                            if let selectedBook = selectedBook {
+                    .navigationDestination(isPresented: $showingBookDetail) {
+                        if let selectedBook = selectedBook {
+                            if collectionName == "All" {
+                                // Determine collection asynchronously
+                                BookDetailsViewController(book: selectedBook, currentCollectionName: "Loading...")
+                                    .environmentObject(authViewModel)
+                                    .onAppear {
+                                        firestoreService.determineCollection(for: selectedBook, userID: authViewModel.user?.uid ?? "") { determinedCollection in
+                                            if let collection = determinedCollection {
+                                                BookDetailsViewController(book: selectedBook, currentCollectionName: collection)
+                                                    .environmentObject(authViewModel)
+                                            }
+                                    }
+                                }
+                            } else {
                                 BookDetailsViewController(book: selectedBook, currentCollectionName: collectionName)
                                     .environmentObject(authViewModel)
                             }
+                        } else {
+                            // Handle the case where `selectedBook` is nil
+                            Text("Error: No book selected")
                         }
                     }
                 }
+            }
 //            }.navigationBarBackButtonHidden(true)
     private func fetchBooks() {
         if authViewModel.isAuthenticated, let userID = authViewModel.user?.uid {

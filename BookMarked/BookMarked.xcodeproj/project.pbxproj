@@ -16,6 +16,7 @@
 		9C7CB1372C379F3E00C19E36 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7CB1362C379F3E00C19E36 /* WelcomeViewController.swift */; };
 		9CE7FA362C38F6CA00D49033 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE7FA352C38F6CA00D49033 /* SignupViewController.swift */; };
 		9CE7FA382C38F6E800D49033 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE7FA372C38F6E800D49033 /* LoginViewController.swift */; };
+		E204FD1F2C65940A00888346 /* EditBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E204FD1E2C65940A00888346 /* EditBookViewController.swift */; };
 		E21689BA2C58669900570273 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21689B92C58669900570273 /* TabBarController.swift */; };
 		E21689BC2C58C3C700570273 /* FirestoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21689BB2C58C3C700570273 /* FirestoreService.swift */; };
 		E21689BE2C58C6C300570273 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21689BD2C58C6C300570273 /* AuthViewModel.swift */; };
@@ -40,6 +41,7 @@
 		E28EF97F2C3CE93400740B8B /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = E28EF97E2C3CE93400740B8B /* FirebaseFirestore */; };
 		E2B192402C634B7200063B00 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E2B1923F2C634B7200063B00 /* GoogleService-Info.plist */; };
 		E2D8D7462C577EC400D81754 /* SearchViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D8D7452C577EC400D81754 /* SearchViewContainer.swift */; };
+		E2EFB4C32C64A95600482E16 /* BookDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EFB4C22C64A95600482E16 /* BookDetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +56,7 @@
 		9C7CB1362C379F3E00C19E36 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		9CE7FA352C38F6CA00D49033 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignupViewController.swift; path = BookMarked/SignupViewController.swift; sourceTree = SOURCE_ROOT; };
 		9CE7FA372C38F6E800D49033 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = BookMarked/LoginViewController.swift; sourceTree = SOURCE_ROOT; };
+		E204FD1E2C65940A00888346 /* EditBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBookViewController.swift; sourceTree = "<group>"; };
 		E21689B92C58669900570273 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		E21689BB2C58C3C700570273 /* FirestoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreService.swift; sourceTree = "<group>"; };
 		E21689BD2C58C6C300570273 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
@@ -74,6 +77,7 @@
 		E268468C2C4780F500CA4FA6 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		E2B1923F2C634B7200063B00 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E2D8D7452C577EC400D81754 /* SearchViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewContainer.swift; sourceTree = "<group>"; };
+		E2EFB4C22C64A95600482E16 /* BookDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +158,8 @@
 				E232295E2C50841B000A6F29 /* ProfileViewController.swift */,
 				E23229602C508583000A6F29 /* BookViewController.swift */,
 				E21689BF2C59C16500570273 /* AllBooksViewController.swift */,
+				E2EFB4C22C64A95600482E16 /* BookDetailsViewController.swift */,
+				E204FD1E2C65940A00888346 /* EditBookViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -267,6 +273,7 @@
 			files = (
 				E23229592C507D14000A6F29 /* ViewController.swift in Sources */,
 				9CE7FA382C38F6E800D49033 /* LoginViewController.swift in Sources */,
+				E2EFB4C32C64A95600482E16 /* BookDetailsViewController.swift in Sources */,
 				E22D53212C478CFA00560D90 /* BookViewModel.swift in Sources */,
 				9CE7FA362C38F6CA00D49033 /* SignupViewController.swift in Sources */,
 				E22D531E2C478AAC00560D90 /* BookService.swift in Sources */,
@@ -280,6 +287,7 @@
 				9C7CB1372C379F3E00C19E36 /* WelcomeViewController.swift in Sources */,
 				E22D531B2C47879300560D90 /* BookModel.swift in Sources */,
 				9C57AFD22C363F9C0068DBE7 /* AppDelegate.swift in Sources */,
+				E204FD1F2C65940A00888346 /* EditBookViewController.swift in Sources */,
 				E21689BA2C58669900570273 /* TabBarController.swift in Sources */,
 				E23229612C508583000A6F29 /* BookViewController.swift in Sources */,
 				E268468D2C4780F500CA4FA6 /* HomeViewController.swift in Sources */,

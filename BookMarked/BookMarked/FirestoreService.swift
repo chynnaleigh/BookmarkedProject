@@ -121,8 +121,16 @@ class FirestoreService {
                 for document in querySnapshot?.documents ?? [] {
                     if let title = document.data()["title"] as? String {
                         let id = UUID(uuidString: document.documentID) ?? UUID()
+                        let description = document.data()["description"] as? String
                         let thumbnail = document.data()["thumbnail"] as? String
-                        let book = BookAllData(id: id, title: title, thumbnail: thumbnail)
+                        let pageCount = document.data()["pageCount"] as? Int
+                        let book = BookAllData(
+                            id: id,
+                            title: title,
+                            description: description,
+                            thumbnail: thumbnail,
+                            pageCount: pageCount
+                        )
                         allBooks.append(book)
                     }
                 }
@@ -151,11 +159,15 @@ class FirestoreService {
             for document in querySnapshot?.documents ?? [] {
                 if let title = document.data()["title"] as? String {
                     let id = UUID(uuidString: document.documentID) ?? UUID()
+                    let description = document.data()["description"] as? String
                     let thumbnail = document.data()["thumbnail"] as? String
+                    let pageCount = document.data()["pageCount"] as? Int
                     let book = BookAllData(
                         id: id,
                         title: title,
-                        thumbnail: thumbnail
+                        description: description,
+                        thumbnail: thumbnail,
+                        pageCount: pageCount
                     )
                     books.append(book)
                 }
@@ -163,6 +175,33 @@ class FirestoreService {
             completion(books)
         }
     }
+    
+    func determineCollection(for book: BookAllData, userID: String, completion: @escaping (String?) -> Void) {
+        let userDoc = db.collection("users").document(userID)
+        let subcollections = ["Unread", "Reading", "Completed"]
+        
+        let dispatchGroup = DispatchGroup()
+        var foundCollection: String? = nil
+        
+        for subcollection in subcollections {
+            dispatchGroup.enter()
+            
+            let bookCollection = userDoc.collection("Books").document(subcollection).collection(subcollection)
+            bookCollection.document(book.id.uuidString).getDocument { (document, error) in
+                if let error = error {
+                    print("Error getting document: \(error)")
+                } else if let document = document, document.exists {
+                    foundCollection = subcollection
+                }
+                dispatchGroup.leave()
+            }
+        }
+        
+        dispatchGroup.notify(queue: .main) {
+            completion(foundCollection)
+        }
+    }
+
     
     func removeBookFromCollection(userID: String, collectionName: String, bookID: UUID, completion: @escaping (Bool) -> Void) {
         let userDoc = db.collection("users").document(userID)

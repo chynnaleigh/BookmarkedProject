@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "8D58656E-D610-43DD-9713-C09AA8F34C0A"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BC740D01-483C-4113-8843-3D2A8579C1B4"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BookMarked/ViewControllers/AllBooksViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "2"
+            endingLineNumber = "2"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "148C03A6-126D-4D2D-8813-813FA5C7E7EF"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BookMarked/FirestoreService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
+            landmarkName = "getAllBooks(userID:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "148C03A6-126D-4D2D-8813-813FA5C7E7EF - 12f92ad381620dbb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BookMarked.FirestoreService.getAllBooks(userID: Swift.String, completion: (Swift.Array&lt;BookMarked.BookAllData&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "BookMarked"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chynnaleigh/Documents/School/COMP%203912%20-%20iOS%20Mobile%20App%20Development/Project/GitHub/BookMarked/BookMarked/FirestoreService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "114"
+                  endingLineNumber = "114">
+               </Location>
+               <Location
+                  uuid = "148C03A6-126D-4D2D-8813-813FA5C7E7EF - c5b71d4d6bd58d4d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRQuerySnapshot&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in BookMarked.FirestoreService.getAllBooks(userID: Swift.String, completion: (Swift.Array&lt;BookMarked.BookAllData&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "BookMarked"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chynnaleigh/Documents/School/COMP%203912%20-%20iOS%20Mobile%20App%20Development/Project/GitHub/BookMarked/BookMarked/FirestoreService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "107"
+                  endingLineNumber = "107">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "53251B9E-A579-4D23-8D9A-ECA66BA23FA1"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BookMarked/FirestoreService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
+            landmarkName = "getAllBooks(userID:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "53251B9E-A579-4D23-8D9A-ECA66BA23FA1 - 18c228b6f1815704"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BookMarked.FirestoreService.getAllBooksFromSubcollection(userID: Swift.String, subcollectionName: Swift.String, completion: (Swift.Array&lt;BookMarked.BookAllData&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "BookMarked"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chynnaleigh/Documents/School/COMP%203912%20-%20iOS%20Mobile%20App%20Development/Project/GitHub/BookMarked/BookMarked/FirestoreService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "141"
+                  endingLineNumber = "141">
+               </Location>
+               <Location
+                  uuid = "53251B9E-A579-4D23-8D9A-ECA66BA23FA1 - 12f92ad381620930"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BookMarked.FirestoreService.getAllBooks(userID: Swift.String, completion: (Swift.Array&lt;BookMarked.BookAllData&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "BookMarked"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chynnaleigh/Documents/School/COMP%203912%20-%20iOS%20Mobile%20App%20Development/Project/GitHub/BookMarked/BookMarked/FirestoreService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "141"
+                  endingLineNumber = "141">
+               </Location>
+               <Location
+                  uuid = "53251B9E-A579-4D23-8D9A-ECA66BA23FA1 - 48299c2906cf2514"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 () -&gt; () in BookMarked.FirestoreService.getAllBooks(userID: Swift.String, completion: (Swift.Array&lt;BookMarked.BookAllData&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "BookMarked"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/chynnaleigh/Documents/School/COMP%203912%20-%20iOS%20Mobile%20App%20Development/Project/GitHub/BookMarked/BookMarked/FirestoreService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "107"
+                  endingLineNumber = "107">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
